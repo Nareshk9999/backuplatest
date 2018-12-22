@@ -1,0 +1,67 @@
+<mat-horizontal-stepper linear #stepper>
+  <mat-step [stepControl]="firstFormGroup" errorMessage="Name is required.">
+    <form [formGroup]="firstFormGroup">
+      <ng-template matStepLabel>Step 1</ng-template>
+      <mat-form-field>
+        <input matInput placeholder="Enter User Email Id" formControlName="firstCtrl" required>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup" errorMessage="Address is required.">
+    <form [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>Step 2</ng-template>
+      <mat-form-field>
+        <input matInput placeholder="First Name" formControlName="secondCtrl" required>
+      </mat-form-field>
+      <div>
+         <mat-form-field>
+        <input matInput placeholder="Last Name" formControlName="secondCtrl" required>
+      </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+       <input matInput placeholder="Phone Number" formControlName="secondCtrl" required>
+     </mat-form-field>
+     </div>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step errorMessage="Address is required.">
+    <form >
+      <ng-template matStepLabel>Step 3</ng-template>
+      <h5>Email Id: workprocesla@hp.com</h5>
+      <h5>Fisrt Name: testData</h5>
+      <h5>Last Name: updated</h5>
+      <h5>Phone: 934535602570</h5>
+      <mat-form-field>
+        <mat-select placeholder="Select Role" [formControl]="toppings" multiple>
+          <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
+        </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-select placeholder="Select Security Model" [formControl]="securityModel" multiple>
+            <mat-option *ngFor="let securityList of securityModelList" [value]="securityList">{{securityList}}</mat-option>
+          </mat-select>
+      </mat-form-field>
+      
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Step 4</ng-template>
+    You are now done.
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button (click)="stepper.reset()">Submit</button>
+    </div>
+  </mat-step>
+</mat-horizontal-stepper>
